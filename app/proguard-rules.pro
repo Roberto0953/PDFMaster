@@ -1,0 +1,4 @@
+-keep class com.tom_roush.** { *; }
+-keep class org.apache.pdfbox.** { *; }
+-keep class org.apache.commons.logging.** { *; }
+-dontwarn org.bouncycastle.**
