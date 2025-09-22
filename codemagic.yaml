@@ -2,8 +2,6 @@ workflows:
   android-build:
     name: Build Android debug APK
     environment:
-      android: # immagine con Android SDK & Gradle preinstallati
-        image: latest
       vars:
         JAVA_HOME: "/usr/lib/jvm/java-17-openjdk"
     scripts:
