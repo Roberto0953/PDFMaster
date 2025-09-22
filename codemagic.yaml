@@ -1,0 +1,21 @@
+workflows:
+  android-build:
+    name: Build Android debug APK
+    environment:
+      android: # immagine con Android SDK & Gradle preinstallati
+        image: latest
+      vars:
+        JAVA_HOME: "/usr/lib/jvm/java-17-openjdk"
+    scripts:
+      - name: Check Gradle / create wrapper if missing
+        script: |
+          if [ ! -f ./gradlew ]; then
+            echo "Gradle wrapper non trovato: lo genero"
+            gradle --version
+            gradle wrapper --gradle-version 8.7
+          fi
+          chmod +x ./gradlew
+      - name: Assemble Debug
+        script: ./gradlew --no-daemon clean assembleDebug
+    artifacts:
+      - app/build/outputs/**/*.apk
